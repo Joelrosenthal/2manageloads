@@ -1,0 +1,30 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+#pick_store_search_btn, #delivery_store_search_btn, #google_map_btn {
+	margin-top: 27px;
+}
+
+#new_shipment_btn {
+	margin-top: 27px;
+}
+
+#pick_zip, #delivery_zip, #pick_store_search, #delivery_store_search, #commodity {
+	background-color: aliceblue;
+}
+
+.search-background {
+	background-color: aliceblue;
+	position:absolute;
+	z-index: 99 !important;
+}
+
+
