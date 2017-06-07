@@ -16946,7 +16946,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example', __webpack_requi
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('shipmentstable', __webpack_require__(316));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('datepicker', __webpack_require__(272));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('commoditysearch', __webpack_require__(325));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('picksearch', __webpack_require__(319));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pickcomponent', __webpack_require__(331));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('deliverysearch', __webpack_require__(322));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -96434,146 +96434,9 @@ if (false) {
 }
 
 /***/ }),
-/* 318 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var algoliasearch = __webpack_require__(293);
-
-var client = algoliasearch('FOI57C222C', '3eed1ff015b373eed1916d3e8d054d67');
-
-var index = client.initIndex('stores');
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {},
-	data: function data() {
-		return {
-			query: '',
-
-			results: []
-		};
-	},
-
-
-	methods: {
-		search: function search() {
-			var _this = this;
-
-			index.search(this.query, function (err, content) {
-
-				_this.results = content.hits;
-			});
-		}
-	}
-});
-
-/***/ }),
-/* 319 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(46)(
-  /* script */
-  __webpack_require__(318),
-  /* template */
-  __webpack_require__(320),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/michaelcornille/Code/2manageloads/resources/assets/js/components/PickSearch.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] PickSearch.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-75dc2f13", Component.options)
-  } else {
-    hotAPI.reload("data-v-75dc2f13", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 320 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.query),
-      expression: "query"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "pick_store_search",
-      "id": "pick_store_search",
-      "placeholder": "search by pick store number, address, phone, etc..."
-    },
-    domProps: {
-      "value": (_vm.query)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.search()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.query = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.results.length) ? _c('div', {
-    staticClass: "row search-background"
-  }, _vm._l((_vm.results), function(user) {
-    return _c('div', {
-      staticClass: "text-center"
-    }, [_c('h5', {
-      staticClass: "text-center"
-    }, [_vm._v(_vm._s(user.analysis_region_name + ' ' + user.address))])])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-75dc2f13", module.exports)
-  }
-}
-
-/***/ }),
+/* 318 */,
+/* 319 */,
+/* 320 */,
 /* 321 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96846,6 +96709,245 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-2b8d72bb", module.exports)
+  }
+}
+
+/***/ }),
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var algoliasearch = __webpack_require__(293);
+
+var client = algoliasearch('FOI57C222C', '3eed1ff015b373eed1916d3e8d054d67');
+
+var index = client.initIndex('stores');
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	mounted: function mounted() {},
+	data: function data() {
+		return {
+			query: '',
+
+			results: [],
+
+			pick_city: '',
+			pick_state: ''
+		};
+	},
+
+
+	methods: {
+
+		select_pick_store: function select_pick_store(pc_number, analysis_region_name, address, city, state, zip) {
+
+			this.pick_city = city;
+			this.pick_state = state;
+			this.query = pc_number + ' ' + analysis_region_name + ' ' + address + ' ' + city + ' ' + state + ' ' + zip;
+			this.results = [];
+		},
+
+		search: function search(query) {
+			var _this = this;
+
+			if (query.length > 3) {
+
+				index.search(this.query, function (err, content) {
+
+					_this.results = content.hits;
+				});
+			}
+		}
+	}
+});
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(46)(
+  /* script */
+  __webpack_require__(330),
+  /* template */
+  __webpack_require__(332),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/michaelcornille/Code/2manageloads/resources/assets/js/components/PickComponent.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] PickComponent.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a9d2ed3c", Component.options)
+  } else {
+    hotAPI.reload("data-v-a9d2ed3c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "id": "pick_city"
+    }
+  }, [_vm._v("Pick City")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pick_city),
+      expression: "pick_city"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "pick_city",
+      "name": "pick_city"
+    },
+    domProps: {
+      "value": (_vm.pick_city)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pick_city = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "id": "pick_state"
+    }
+  }, [_vm._v("Pick State")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pick_state),
+      expression: "pick_state"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "pick_state",
+      "name": "pick_state"
+    },
+    domProps: {
+      "value": (_vm.pick_state)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pick_state = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "id": "pick_store_search"
+    }
+  }, [_vm._v("Pick Store Search")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query),
+      expression: "query"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "pick_store_search",
+      "id": "pick_store_search",
+      "placeholder": "search by pick store number, address, phone, etc..."
+    },
+    domProps: {
+      "value": (_vm.query)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.search(_vm.query)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.query = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.results.length) ? _c('div', {
+    staticClass: "row search-background"
+  }, _vm._l((_vm.results), function(user) {
+    return _c('div', {
+      staticClass: "text-center"
+    }, [_c('a', {
+      staticClass: "text-center",
+      on: {
+        "click": function($event) {
+          _vm.select_pick_store(user.pc_number, user.analysis_region_name, user.address, user.city, user.state, user.zip)
+        }
+      }
+    }, [_vm._v(_vm._s(user.pc_number + ' ' + user.analysis_region_name + ' ' + user.address + ' ' + user.city + ' ' + user.state + ' ' + user.zip))])])
+  })) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-a9d2ed3c", module.exports)
   }
 }
 

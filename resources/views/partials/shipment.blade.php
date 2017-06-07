@@ -25,24 +25,7 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-4">
-		{{ Form::label('pick_city', 'Pick City', ['class' => 'label-control']) }}
-		{{ Form::text('pick_city', null, ['class' => 'form-control']) }}
-	</div>
-	<div class="col-md-4">
-		{{ Form::label('pick_state', 'Pick State', ['class' => 'label-control']) }}
-		{{ Form::text('pick_state', null, ['class' => 'form-control']) }}
-	</div>
-	<div class="col-md-4">
-		
-			{{ Form::label('pick_store_search', 'Search for Pick Store', ['class' => 'label-control']) }}
-			<picksearch></picksearch>
-			<!-- {{ Form::text('pick_store_search', null, ['class' => 'form-control', 'placeholder' => 'search by pick store number, address, phone, etc...']) }} -->
-				
-		
-	</div>
-</div>
+<pickcomponent></pickcomponent>
 
 <div class="row">
 	<div class="col-md-4">

@@ -26,12 +26,15 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('shipmentstable', require('./components/ShipmentsTable.vue'));
 Vue.component('datepicker', require('./components/Datepicker.vue'));
 Vue.component('commoditysearch', require('./components/CommoditySearch.vue'));
-Vue.component('picksearch', require('./components/PickSearch.vue'));
+Vue.component('pickcomponent', require('./components/PickComponent.vue'));
 Vue.component('deliverysearch', require('./components/DeliverySearch.vue'));
+
 
 const app = new Vue({
     el: '#app'
 });
+
+
 
 /** Display google map when cities are entered **/
 

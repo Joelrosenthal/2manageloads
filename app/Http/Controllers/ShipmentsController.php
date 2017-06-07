@@ -22,6 +22,8 @@ class ShipmentsController extends Controller
         'data' => \App\Shipment::all()
         ]);
 
+        
+
         return view('shipment');
     }
 
