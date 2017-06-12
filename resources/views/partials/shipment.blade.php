@@ -1,14 +1,4 @@
 <h3>CREATE SHIPMENT <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></h3>
-<div class="row">
-	<div class="col-md-4">
-		{{ Form::label('pick_zip', 'Search by Pick Zip', ['class' => 'label-control']) }}
-		{{ Form::text('pick_zip', null, ['class' => 'form-control', 'placeholder' => 'search by pick zip...']) }}
-	</div>
-	<div class="col-md-4">
-		{{ Form::label('delivery_zip', 'Search by Delivery Zip', ['class' => 'label-control']) }}
-		{{ Form::text('delivery_zip', null, ['class' => 'form-control', 'placeholder' => 'search by delivery zip...']) }}
-	</div>
-</div>
 
 <div class="row">
 	<div class="col-md-4">
@@ -25,30 +15,7 @@
 	</div>
 </div>
 
-<pickcomponent></pickcomponent>
-
-<div class="row">
-	<div class="col-md-4">
-		{{ Form::label('delivery_city', 'Delivery City', ['class' => 'label-control']) }}
-		{{ Form::text('delivery_city', null, ['class' => 'form-control']) }}
-	</div>
-	<div class="col-md-4">
-		<div class="input-group">
-			{{ Form::label('delivery_state', 'Delivery State', ['class' => 'label-control']) }}
-			{{ Form::text('delivery_state', null, ['class' => 'form-control']) }}
-				<span class="input-group-btn">
-					<button id="google_map_btn" class="btn btn-default btn-success" type="button">MAP!</button>
-      			</span>
-      	</div>
-	</div>
-	<div class="col-md-4">
-		
-			{{ Form::label('delivery_store_search', 'Search for Delivery Store', ['class' => 'label-control']) }}
-			<deliverysearch></deliverysearch>
-			<!-- {{ Form::text('delivery_store_search', null, ['class' => 'form-control', 'placeholder' => 'search by delivery store number, address, phone, etc.......'] ) }} -->
-				
-	</div>
-</div>
+<pickanddeliverycomponent></pickanddeliverycomponent>
 
 <hr>
 

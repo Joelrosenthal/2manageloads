@@ -16944,82 +16944,18 @@ window.Vue = __webpack_require__(2);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example', __webpack_require__(174));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('shipmentstable', __webpack_require__(316));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('datepicker', __webpack_require__(272));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('commoditysearch', __webpack_require__(325));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pickcomponent', __webpack_require__(331));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('deliverysearch', __webpack_require__(322));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pickanddeliverycomponent', __webpack_require__(340));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-	el: '#app'
-});
-
-/** Display google map when cities are entered **/
-
-$(document).on('click', '#google_map_btn', function () {
-
-	var pick_city = $("#pick_city").val();
-	var pick_state = $("#pick_state").val();
-	var delivery_city = $("#delivery_city").val();
-	var delivery_state = $("#delivery_state").val();
-
-	$('#google_map').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://www.google.com/maps/embed/v1/directions?key=AIzaSyBsrHsyaDhAw8CupGAEd_6M3hnPjO89mQ8&origin=" + pick_city + "," + pick_state + "&destination=" + delivery_city + "," + delivery_state + "&mode=driving&units=imperial'></iframe>");
-});
-
-/** Display google map when zip codes are entered **/
-
-$(document).ready(function () {
-	$('#pick_zip').keyup(function () {
-		var zipCode = $(this).val();
-		if (zipCode.length === 5 && $.isNumeric(zipCode)) {
-			$.ajax({
-				type: "GET",
-				beforeSend: function beforeSend(request) {
-					request.setRequestHeader("x-key", "7fdf923c5fb9dccddad8bdd98b828933e801fd73");
-				},
-				url: "https://zip.getziptastic.com/v3/US/" + zipCode,
-				success: function success(data) {
-					//console.log(data[0].city);
-					$("#pick_city").val(data[0].city);
-					$("#pick_state").val(data[0].state_short);
-				}
-			});
-		}
-	});
-});
-
-$(document).ready(function () {
-	$('#delivery_zip').keyup(function () {
-		var zipCode = $(this).val();
-		if (zipCode.length === 5 && $.isNumeric(zipCode)) {
-
-			$.ajax({
-				type: "GET",
-				beforeSend: function beforeSend(request) {
-					request.setRequestHeader("x-key", "7fdf923c5fb9dccddad8bdd98b828933e801fd73");
-				},
-				url: "https://zip.getziptastic.com/v3/US/" + zipCode,
-				success: function success(data) {
-
-					$("#delivery_city").val(data[0].city);
-					$("#delivery_state").val(data[0].state_short);
-
-					var pick_city = $("#pick_city").val();
-					var pick_state = $("#pick_state").val();
-					var delivery_city = $("#delivery_city").val();
-					var delivery_state = $("#delivery_state").val();
-
-					$('#google_map').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://www.google.com/maps/embed/v1/directions?key=AIzaSyBsrHsyaDhAw8CupGAEd_6M3hnPjO89mQ8&origin=" + pick_city + "," + pick_state + "&destination=" + delivery_city + "," + delivery_state + "&mode=driving&units=imperial'></iframe>");
-				}
-			});
-		}
-	});
+  el: '#app'
 });
 
 $(function () {
-	$(".plannedpicker, .actualpicker, .planneddeliverypicker, .actualdeliverypicker").datepicker({
-		changeMonth: true,
-		changeYear: true
-	});
+  $(".plannedpicker, .actualpicker, .planneddeliverypicker, .actualdeliverypicker").datepicker({
+    changeMonth: true,
+    changeYear: true
+  });
 });
 
 /***/ }),
@@ -90256,104 +90192,9 @@ module.exports = __webpack_require__(62);
 /* 268 */,
 /* 269 */,
 /* 270 */,
-/* 271 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-
-      value1: ''
-
-    };
-  }
-});
-
-/***/ }),
-/* 272 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(46)(
-  /* script */
-  __webpack_require__(271),
-  /* template */
-  __webpack_require__(273),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/michaelcornille/Code/2manageloads/resources/assets/js/components/Datepicker.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Datepicker.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-60c193b4", Component.options)
-  } else {
-    hotAPI.reload("data-v-60c193b4", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 273 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "block"
-  }, [_c('span', {
-    staticClass: "demonstration"
-  }, [_vm._v("Planned Pick  Date")]), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "Pick a day",
-      "name": "delivery_date",
-      "id": "delivery_date"
-    },
-    model: {
-      value: (_vm.value1),
-      callback: function($$v) {
-        _vm.value1 = $$v
-      },
-      expression: "value1"
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-60c193b4", module.exports)
-  }
-}
-
-/***/ }),
+/* 271 */,
+/* 272 */,
+/* 273 */,
 /* 274 */
 /***/ (function(module, exports) {
 
@@ -96437,149 +96278,15 @@ if (false) {
 /* 318 */,
 /* 319 */,
 /* 320 */,
-/* 321 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-var algoliasearch = __webpack_require__(293);
-
-var client = algoliasearch('FOI57C222C', '3eed1ff015b373eed1916d3e8d054d67');
-
-var index = client.initIndex('stores');
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {},
-	data: function data() {
-		return {
-			query: '',
-
-			results: []
-		};
-	},
-
-
-	methods: {
-		search: function search() {
-			var _this = this;
-
-			index.search(this.query, function (err, content) {
-
-				_this.results = content.hits;
-			});
-		}
-	}
-});
-
-/***/ }),
-/* 322 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(46)(
-  /* script */
-  __webpack_require__(321),
-  /* template */
-  __webpack_require__(323),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/michaelcornille/Code/2manageloads/resources/assets/js/components/DeliverySearch.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] DeliverySearch.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9627b3b4", Component.options)
-  } else {
-    hotAPI.reload("data-v-9627b3b4", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 323 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.query),
-      expression: "query"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "delivery_store_search",
-      "id": "delivery_store_search",
-      "placeholder": "search by delivery store number, address, phone, etc..."
-    },
-    domProps: {
-      "value": (_vm.query)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.search()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.query = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.results.length) ? _c('div', {
-    staticClass: "row"
-  }, _vm._l((_vm.results), function(user) {
-    return _c('div', {
-      staticClass: "text-center"
-    }, [_c('h4', {
-      staticClass: "text-center"
-    }, [_vm._v(_vm._s(user.analysis_region_name + ' ' + user.address))])])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-9627b3b4", module.exports)
-  }
-}
-
-/***/ }),
+/* 321 */,
+/* 322 */,
+/* 323 */,
 /* 324 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -96618,13 +96325,23 @@ var index = client.initIndex('equipment');
 
 
 	methods: {
-		search: function search() {
+		search: function search(query) {
 			var _this = this;
 
-			index.search(this.query, function (err, content) {
+			if (query.length > 3) {
 
-				_this.results = content.hits;
-			});
+				index.search(this.query, function (err, content) {
+
+					_this.results = content.hits;
+				});
+			}
+		},
+
+
+		select_commodity: function select_commodity(make, model, commodity, length, width, height, weight) {
+
+			this.query = make + ' ' + model + ' ' + commodity + ' ' + length + ' ' + width + ' ' + height + ' ' + weight;
+			this.results = [];
 		}
 	}
 });
@@ -96687,7 +96404,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "keyup": function($event) {
-        _vm.search()
+        _vm.search(_vm.query)
       },
       "input": function($event) {
         if ($event.target.composing) { return; }
@@ -96695,13 +96412,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), (_vm.results.length) ? _c('div', {
-    staticClass: "row"
-  }, _vm._l((_vm.results), function(user) {
+    staticClass: "row commodity-search-background"
+  }, _vm._l((_vm.results), function(equip) {
     return _c('div', {
       staticClass: "text-center"
-    }, [_c('h4', {
-      staticClass: "text-center"
-    }, [_vm._v(_vm._s(user.make + ' ' + user.model))])])
+    }, [_c('a', {
+      staticClass: "text-center",
+      on: {
+        "click": function($event) {
+          _vm.select_commodity(equip.make, equip.model, equip.commodity, equip.length, equip.width, equip.height, equip.weight)
+        }
+      }
+    }, [_vm._v(_vm._s(equip.make + ' ' + equip.model + ' ' + equip.commodity + ' ' + equip.length + ' ' + equip.width + ' ' + equip.height + ' ' + equip.weight))])])
   })) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -96716,11 +96438,67 @@ if (false) {
 /* 327 */,
 /* 328 */,
 /* 329 */,
-/* 330 */
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -96759,25 +96537,82 @@ var client = algoliasearch('FOI57C222C', '3eed1ff015b373eed1916d3e8d054d67');
 var index = client.initIndex('stores');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {},
 	data: function data() {
 		return {
-			query: '',
 
-			results: [],
-
+			mapHtml: '',
+			pick_query: '',
+			pick_results: [],
 			pick_city: '',
-			pick_state: ''
+			pick_state: '',
+			pick_zip: '',
+			query: '',
+			results: [],
+			delivery_city: '',
+			delivery_state: '',
+			delivery_zip: ''
 		};
 	},
 
 
+	watch: {
+		pick_zip: function pick_zip() {
+			this.pick_city = '';
+			if (this.pick_zip.length == 5) {
+				this.lookUpPickZip();
+			}
+		},
+
+		delivery_zip: function delivery_zip() {
+			this.delivery_city = '';
+			if (this.delivery_zip.length == 5) {
+				this.lookUpDeliveryZip();
+			}
+		}
+
+	},
+
 	methods: {
+
+		lookUpPickZip: _.debounce(function () {
+			var app = this;
+			app.pick_city = "Searching...";
+			axios.get('http://ziptasticapi.com/' + app.pick_zip).then(function (response) {
+				app.pick_city = response.data.city;
+				app.pick_state = response.data.state;
+			}).catch(function (error) {
+				app.pick_city = "Invalid Zipcode";
+			});
+		}, 500),
+
+		lookUpDeliveryZip: _.debounce(function () {
+			var app = this;
+			app.delivery_city = "Searching...";
+			axios.get('http://ziptasticapi.com/' + app.delivery_zip).then(function (response) {
+				app.delivery_city = response.data.city;
+				app.delivery_state = response.data.state;
+			}).catch(function (error) {
+				app.delivery_city = "Invalid Zipcode";
+			});
+		}, 500),
+
+		google_map: function google_map() {
+
+			this.mapHtml = "<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://www.google.com/maps/embed/v1/directions?key=AIzaSyBsrHsyaDhAw8CupGAEd_6M3hnPjO89mQ8&origin=" + this.pick_city + "," + this.pick_state + "&destination=" + this.delivery_city + "," + this.delivery_state + "&mode=driving&units=imperial'></iframe>";
+		},
 
 		select_pick_store: function select_pick_store(pc_number, analysis_region_name, address, city, state, zip) {
 
 			this.pick_city = city;
 			this.pick_state = state;
+			this.pick_query = pc_number + ' ' + analysis_region_name + ' ' + address + ' ' + city + ' ' + state + ' ' + zip;
+			this.pick_results = [];
+		},
+
+		select_delivery_store: function select_delivery_store(pc_number, analysis_region_name, address, city, state, zip) {
+
+			this.delivery_city = city;
+			this.delivery_state = state;
 			this.query = pc_number + ' ' + analysis_region_name + ' ' + address + ' ' + city + ' ' + state + ' ' + zip;
 			this.results = [];
 		},
@@ -96792,27 +96627,39 @@ var index = client.initIndex('stores');
 					_this.results = content.hits;
 				});
 			}
+		},
+		pick_search: function pick_search(pick_query) {
+			var _this2 = this;
+
+			if (pick_query.length > 3) {
+
+				index.search(this.pick_query, function (err, content) {
+
+					_this2.pick_results = content.hits;
+				});
+			}
 		}
 	}
+
 });
 
 /***/ }),
-/* 331 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(46)(
   /* script */
-  __webpack_require__(330),
+  __webpack_require__(339),
   /* template */
-  __webpack_require__(332),
+  __webpack_require__(341),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/michaelcornille/Code/2manageloads/resources/assets/js/components/PickComponent.vue"
+Component.options.__file = "/Users/michaelcornille/Code/2manageloads/resources/assets/js/components/PickAndDeliveryComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] PickComponent.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] PickAndDeliveryComponent.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -96821,9 +96668,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a9d2ed3c", Component.options)
+    hotAPI.createRecord("data-v-4e09997d", Component.options)
   } else {
-    hotAPI.reload("data-v-a9d2ed3c", Component.options)
+    hotAPI.reload("data-v-4e09997d", Component.options)
   }
 })()}
 
@@ -96831,18 +96678,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 332 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
   }, [_c('label', {
     staticClass: "label-control",
     attrs: {
-      "id": "pick_city"
+      "for": "pick_city"
     }
   }, [_vm._v("Pick City")]), _vm._v(" "), _c('input', {
     directives: [{
@@ -96867,11 +96714,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
+    staticClass: "col-md-2"
   }, [_c('label', {
     staticClass: "label-control",
     attrs: {
-      "id": "pick_state"
+      "for": "pick_state"
     }
   }, [_vm._v("Pick State")]), _vm._v(" "), _c('input', {
     directives: [{
@@ -96896,13 +96743,192 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "for": "pick_zip"
+    }
+  }, [_vm._v("Pick Zip Search")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pick_zip),
+      expression: "pick_zip"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "pick_zip",
+      "name": "pick_zip",
+      "placeholder": "search Zip"
+    },
+    domProps: {
+      "value": (_vm.pick_zip)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pick_zip = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('label', {
     staticClass: "label-control",
     attrs: {
-      "id": "pick_store_search"
+      "for": "pick_store_search"
     }
   }, [_vm._v("Pick Store Search")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pick_query),
+      expression: "pick_query"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "pick_store_search",
+      "id": "pick_store_search",
+      "placeholder": "search by pick store number, address, phone, etc..."
+    },
+    domProps: {
+      "value": (_vm.pick_query)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.pick_search(_vm.pick_query)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pick_query = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.pick_results.length) ? _c('div', {
+    staticClass: "row search-background"
+  }, _vm._l((_vm.pick_results), function(pick) {
+    return _c('div', {
+      staticClass: "text-center"
+    }, [_c('a', {
+      staticClass: "text-center",
+      on: {
+        "click": function($event) {
+          _vm.select_pick_store(pick.pc_number, pick.analysis_region_name, pick.address, pick.city, pick.state, pick.zip)
+        }
+      }
+    }, [_vm._v(_vm._s(pick.pc_number + ' ' + pick.analysis_region_name + ' ' + pick.address + ' ' + pick.city + ' ' + pick.state + ' ' + pick.zip))])])
+  })) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "for": "delivery_city"
+    }
+  }, [_vm._v("Delivery City")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.delivery_city),
+      expression: "delivery_city"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "delivery_city",
+      "name": "delivery_city"
+    },
+    domProps: {
+      "value": (_vm.delivery_city)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.delivery_city = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "for": "delivery_state"
+    }
+  }, [_vm._v("Delivery State")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.delivery_state),
+      expression: "delivery_state"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "delivery_state",
+      "name": "delivery_state"
+    },
+    domProps: {
+      "value": (_vm.delivery_state)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.delivery_state = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    staticClass: "btn btn-default btn-success",
+    attrs: {
+      "id": "google_map_btn",
+      "type": "button"
+    },
+    on: {
+      "click": _vm.google_map
+    }
+  }, [_vm._v("MAP!")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "for": "delivery_zip"
+    }
+  }, [_vm._v("Delivery Zip Search")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.delivery_zip),
+      expression: "delivery_zip"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "delivery_zip",
+      "name": "delivery_zip",
+      "placeholder": "search Zip"
+    },
+    domProps: {
+      "value": (_vm.delivery_zip)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.delivery_zip = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('label', {
+    staticClass: "label-control",
+    attrs: {
+      "for": "delivery_store_search"
+    }
+  }, [_vm._v("Delivery Store Search")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -96912,9 +96938,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "name": "pick_store_search",
-      "id": "pick_store_search",
-      "placeholder": "search by pick store number, address, phone, etc..."
+      "name": "delivery_store_search",
+      "id": "delivery_store_search",
+      "placeholder": "search by delivery store number, address, phone, etc..."
     },
     domProps: {
       "value": (_vm.query)
@@ -96937,17 +96963,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "text-center",
       on: {
         "click": function($event) {
-          _vm.select_pick_store(user.pc_number, user.analysis_region_name, user.address, user.city, user.state, user.zip)
+          _vm.select_delivery_store(user.pc_number, user.analysis_region_name, user.address, user.city, user.state, user.zip)
         }
       }
     }, [_vm._v(_vm._s(user.pc_number + ' ' + user.analysis_region_name + ' ' + user.address + ' ' + user.city + ' ' + user.state + ' ' + user.zip))])])
-  })) : _vm._e()])])
+  })) : _vm._e()])]), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "mapping"
+    },
+    domProps: {
+      "innerHTML": _vm._s(_vm.mapHtml)
+    }
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-a9d2ed3c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4e09997d", module.exports)
   }
 }
 

@@ -21,7 +21,7 @@
 	background-color: aliceblue;
 }
 
-.search-background {
+.search-background, .commodity-search-background {
 	background-color: aliceblue;
 	position:absolute;
 	z-index: 99 !important;
@@ -29,5 +29,9 @@
 
 a {
 	cursor: default;
+}
+
+#mapping {
+	margin-top: 15px;
 }
 
