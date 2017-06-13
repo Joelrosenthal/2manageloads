@@ -28,13 +28,13 @@
 	export default {
 
 		mounted() {
-
+			this.getPostData();
 		},
 
 		data() {
 			return {
 				query: '',
-
+				commodity: '',
 				results: []
 			}
 		},
@@ -59,6 +59,14 @@
 				this.query = commodity + ': ' + make + ' ' + model + ' ' + length + '" X ' + width + '" X ' + height + '" ' + weight + 'lbs.'
 				this.results = [];
 			},
+			
+			getPostData() {
+								if(window.hasOwnProperty('post')) {
+
+			this.query=window.post.commodity;
+			}
+			
+			}
 		}
 	}
 

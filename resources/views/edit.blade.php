@@ -14,7 +14,7 @@
 
 </div>
 </div>
-<shipments></shipments>
+<shipmentstable></shipmentstable>
 
 @endsection
 

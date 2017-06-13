@@ -48,6 +48,12 @@
                     options: 
                         {
                             filterByColumn:true,
+                            templates: {
+                                id: function(h, row) {
+                                    let url=`/shipment/${row.id}/edit`
+                                    return <a class="edit-link" href={url}>{row.id}</a>;
+                                }
+                            }
                             
 
                         }
@@ -61,3 +67,8 @@
     }
 
 </script>
+<style>
+.edit-link {
+    color: black;
+}
+</style>

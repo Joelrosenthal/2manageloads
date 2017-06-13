@@ -101,7 +101,12 @@ class ShipmentsController extends Controller
 
          $post = Shipment::findOrFail($id);
 
-         JavaScript::put(['post' => $post]);
+
+         JavaScript::put([
+            'post' => $post,
+            'data' => \App\Shipment::all()
+            ]);
+
 
          return view('edit', compact('post', $post));
     }
@@ -115,7 +120,37 @@ class ShipmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         
+     date_default_timezone_set("America/Chicago");
+        
+        $this->validate($request, [
+
+            'urgency' => 'required',
+            // 'load_type' => 'required',
+            // 'pick_city' => 'required',
+            // 'pick_state' => 'required',
+            // 'pick_date' => 'required',
+            // 'pick_time' => 'required',
+            // 'delivery_city' => 'required',
+            // 'delivery_state' => 'required',
+            // 'delivery_date' => 'required',
+            // 'delivery_time' => 'required',
+            // 'commodity' => 'required',
+            // 'length' => 'required',
+            // 'width' => 'required',
+            // 'height' => 'required',
+            // 'weight' => 'required',            
+              
+        ]);
+
+        $post = Shipment::findOrFail($id);
+
+        $post->update($request->all());
+
+       
+
+        return redirect()->route('shipment.index');
+    
     }
 
     /**
