@@ -22,13 +22,18 @@
 }
 
 .search-background, .commodity-search-background {
-	background-color: aliceblue;
+	background-color: #093145;
 	position:absolute;
 	z-index: 99 !important;
 }
 
 a {
 	cursor: default;
+	color: white;
+}
+
+a:hover{
+	color:white;
 }
 
 #mapping {

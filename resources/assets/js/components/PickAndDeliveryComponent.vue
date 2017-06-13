@@ -101,7 +101,8 @@
 				results: [],
 				delivery_city: '',
 				delivery_state: '',
-				delivery_zip: ''
+				delivery_zip: '',
+				form: {}
 			}
 		},
 
@@ -185,7 +186,7 @@
 					this.results = content.hits
 
 				})
-			}
+			} else { this.results = []; }
 			},
 
 			pick_search(pick_query) {
@@ -197,10 +198,16 @@
 					this.pick_results = content.hits
 
 				})
-			}
+			} else { this.pick_results = []; }
 			}
 
 			
+		},
+		mounted() {
+			this.delivery_city=window.post.delivery_city;
+			this.delivery_state=window.post.delivery_state;
+			this.pick_city=window.post.pick_city;
+			this.pick_state=window.post.pick_state;
 		}
 
 	}

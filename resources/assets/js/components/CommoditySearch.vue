@@ -8,7 +8,7 @@
 			<div class="text-center" v-for="equip in results">
 
 
-				<a v-on:click="select_commodity(equip.make, equip.model, equip.commodity, equip.length, equip.width, equip.height, equip.weight)" class="text-center">{{ equip.make + ' ' + equip.model + ' ' + equip.commodity + ' ' + equip.length + ' ' + equip.width + ' ' + equip.height + ' ' + equip.weight }}</a>
+				<a v-on:click="select_commodity(equip.make, equip.model, equip.commodity, equip.length, equip.width, equip.height, equip.weight)" class="text-center">{{ equip.commodity + ': ' + equip.make + ' ' + equip.model + ' ' + equip.length + '" X ' + equip.width + '" X ' + equip.height + '" ' + equip.weight + 'lbs.' }}</a>
 
 			</div>
 
@@ -50,13 +50,13 @@
 					this.results = content.hits
 
 				})
-			}
+			} else { this.results = []; }
 			},
 
 			select_commodity: function(make, model, commodity, length, width, height, weight) {
 
 				
-				this.query = make + ' ' + model + ' ' + commodity + ' ' + length + ' ' + width + ' ' + height + ' ' + weight
+				this.query = commodity + ': ' + make + ' ' + model + ' ' + length + '" X ' + width + '" X ' + height + '" ' + weight + 'lbs.'
 				this.results = [];
 			},
 		}

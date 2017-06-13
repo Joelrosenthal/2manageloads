@@ -3,7 +3,11 @@
         <div class="row">
             
                 
-                    <v-client-table :data="tableData" :columns="columns" :options="options"></v-client-table>
+            <v-client-table :data="tableData" :columns="columns" :options="options">
+
+
+               
+            </v-client-table>
                 
             
         </div>
@@ -20,7 +24,11 @@
         data:
             function() {
                 return {
+
+
+
                     columns: [
+
                         'id',
                         'pick_city', 
                         'pick_state', 
@@ -34,25 +42,22 @@
 
                         
                         ],
+
+
                     tableData: window.data,
                     options: 
                         {
                             filterByColumn:true,
-
-                            
-
-
-
                             
 
                         }
                         
                     
                         }
-                        },
-        mounted() {
-            console.log('Component mounted.')
-        }
+
+
+            }
+        
     }
 
 </script>
