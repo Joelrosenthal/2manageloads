@@ -51,7 +51,7 @@
                             templates: {
                                 id: function(h, row) {
                                     let url=`/shipment/${row.id}/edit`
-                                    return <a class="edit-link" href={url}>{row.id}</a>;
+                                    return <a class="edit-link" href={url}>Edit</a>;
                                 }
                             }
                             

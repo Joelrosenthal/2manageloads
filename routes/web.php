@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('report', 'ShipmentsController@report');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('shipment', 'ShipmentsController');
+
+Route::post('/report/{type}', 'ShipmentsController@getReport');
 
 //Route::get('/mail', 'ShipmentsController@newMail');

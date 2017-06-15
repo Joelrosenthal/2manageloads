@@ -42,6 +42,7 @@ class CreateShipmentsTable extends Migration
             $table->string('contact_phone')->nullable();
             $table->integer('user_id')->nullable();
             $table->string('ref_number')->nullable();
+            $table->string('po_number')->nullable();
             $table->timestamps();
         });
     }

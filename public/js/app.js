@@ -24134,7 +24134,7 @@ exports.default = {
                             'a',
                             { 'class': 'edit-link', attrs: { href: url }
                             },
-                            [row.id]
+                            ['Edit']
                         );
                     }
                 }

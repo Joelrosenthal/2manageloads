@@ -15,7 +15,7 @@
                 @include('partials.shipment', ['submitButtonText' => 'New Shipment!'])
             {!! Form::close() !!}
 
-            {!! Html::linkRoute('shipment.edit', 'Edit', array(56), ['class' => 'btn btn-success btn-block']) !!}
+            <!-- {!! Html::linkRoute('shipment.edit', 'Edit', array(56), ['class' => 'btn btn-success btn-block']) !!} -->
 
 </div>
 </div>

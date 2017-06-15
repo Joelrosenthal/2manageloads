@@ -35,6 +35,7 @@ class Shipment extends Model
             'contact_phone',
             'user_id',
             'ref_number',
+            'po_number'
 
 			];
 

@@ -8,6 +8,8 @@ use App\Shipment;
 use Mail;
 use App\Mail\NewShipment;
 use Auth;
+use Excel;
+use Input;
 
 class ShipmentsController extends Controller
 {
@@ -164,10 +166,25 @@ class ShipmentsController extends Controller
         //
     }
 
-    // public function newMail()
-    // {
-    //     $shipment = Shipment::findOrFail(5);
+    public function report()
+    {
+        return view('report');
+    }
 
-    //     Mail::to(Auth::user()->email)->queue(new NewShipment($shipment));
-    // }
+    public function getReport($type, Request $request){
+      
+         $start_date = $request->input('start_date');
+         $end_date = $request->input('end_date');
+
+        //$data = Item::get()->toArray();
+        $shipment = Shipment::select('id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state')->whereBetween('pick_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
+
+        return \Excel::create('Profit_Report_' . $start_date . '_to_' . $end_date, function($excel) use ($shipment) {
+            $excel->sheet('mySheet', function($sheet) use ($shipment)
+            {
+                $sheet->fromArray($shipment);
+            });
+        })->download($type);
+    
+    }
 }

@@ -1,15 +1,19 @@
 <h3>CREATE SHIPMENT <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></h3>
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
 		{{ Form::label('ref_number', 'Reference #', ['class' => 'label-control']) }}
 		{{ Form::text('ref_number', null, ['class' => 'form-control']) }}
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
+		{{ Form::label('po_number', 'PO #', ['class' => 'label-control']) }}
+		{{ Form::text('po_number', null, ['class' => 'form-control']) }}
+	</div>
+	<div class="col-md-3">
 		{{ Form::label('urgency', 'Urgency', ['class' => 'label-control']) }}
 		{{ Form::select('urgency', ['Quote' => 'Quote', 'Has Time' => 'Has Time', 'Hot' => 'Hot', 'Screaming' => 'Screaming'], null, ['placeholder' => 'Pick an urgency...', 'class' => 'form-control']) }}
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		{{ Form::label('load_type', 'Full or Partial', ['class' => 'label-control']) }}
 		{{ Form::select('load_type', ['FULL' => 'FULL', 'PARTIAL' => 'PARTIAL'], null, ['placeholder' => 'Choose Full or Partial...', 'class' => 'form-control']) }}
 	</div>
