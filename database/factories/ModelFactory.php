@@ -18,6 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'cell_phone' => $faker->e164PhoneNumber,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
@@ -36,10 +37,14 @@ $factory->define(App\Shipment::class, function (Faker\Generator $faker) {
             'pick_state' => $faker->state(),
             'pick_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
             'pick_time' => $faker->time(),
+            'actual_pick_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'actual_pick_time' => $faker->time(),
             'delivery_city' => $faker->city(),
             'delivery_state' => $faker->state(),
             'delivery_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
             'delivery_time' => $faker->time(),
+            'actual_delivery_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'actual_delivery_time' => $faker->time(),
             'commodity' => $faker->sentence(),
             'special_instructions' => $faker->sentence(),
             'length' => $faker->numberBetween($min = 5, $max = 40),

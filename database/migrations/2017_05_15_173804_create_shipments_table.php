@@ -24,10 +24,14 @@ class CreateShipmentsTable extends Migration
             $table->string('pick_state')->nullable();
             $table->string('pick_date')->nullable();
             $table->string('pick_time')->nullable();
+            $table->string('actual_pick_date')->nullable();
+            $table->string('actual_pick_time')->nullable();
             $table->string('delivery_city')->nullable();
             $table->string('delivery_state')->nullable();
             $table->string('delivery_date')->nullable();
             $table->string('delivery_time')->nullable();
+            $table->string('actual_delivery_date')->nullable();
+            $table->string('actual_delivery_time')->nullable();
             $table->string('commodity')->nullable();
             $table->string('special_instructions')->nullable();
             $table->string('length')->nullable();

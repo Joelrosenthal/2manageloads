@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 <form role="form" class="form-horizontal" method="POST" action="/report/csv">
 
         {{ csrf_field() }}
 
 
 
-        <div class="well" style="width: 300px;">
+        <div class="well">
             <div class="form-group">
                 <div class="row">
-                <div class="col-xs-6">
+                <div class="col-md-6">
                     <label class="label-control" for="start_date">Start Date</label>
-                    <input type="text" class="form-control" name="start_date">
+                    <input type="text" class="form-control daterangestart" name="start_date">
                 </div>
-                <div class="col-xs-6">
+                <div class="col-md-6">
                     <label class="label-control" for="end_date">End Date</label>
-                    <input type="text" class="form-control" name="end_date">
+                    <input type="text" class="form-control daterangeend" name="end_date">
                 </div>
                     
                 </div>

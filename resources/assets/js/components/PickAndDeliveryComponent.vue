@@ -18,7 +18,7 @@
 		
 		<div class="col-md-4">
 			<label for="pick_store_search" class="label-control">Pick Store Search</label>
-			<input type="text" name="pick_store_search" id="pick_store_search" class="form-control" v-model="pick_query" @keyup="pick_search(pick_query)" placeholder="search by pick store number, address, phone, etc...">
+			<input v-on-clickaway="away" type="text" name="pick_store_search" id="pick_store_search" class="form-control" v-model="pick_query" @keyup="pick_search(pick_query)" placeholder="search by pick store number, address, phone, etc...">
 		
 			<div class="row search-background" v-if="pick_results.length">
 				<div class="text-center" v-for="pick in pick_results">
@@ -57,7 +57,7 @@
 		
 		<div class="col-md-4">
 			<label for="delivery_store_search" class="label-control">Delivery Store Search</label>
-			<input type="text" name="delivery_store_search" id="delivery_store_search" class="form-control" v-model="query" @keyup="search(query)" placeholder="search by delivery store number, address, phone, etc...">
+			<input v-on-clickaway="away" type="text" name="delivery_store_search" id="delivery_store_search" class="form-control" v-model="query" @keyup="search(query)" placeholder="search by delivery store number, address, phone, etc...">
 		
 			<div class="row search-background" v-if="results.length">
 				<div class="text-center" v-for="user in results">
@@ -86,7 +86,7 @@
 
 	export default {
 
-
+		mixins: [VueClickaway.mixin],
 
 		data() {
 			return {
@@ -208,7 +208,12 @@
 			this.pick_city=window.post.pick_city;
 			this.pick_state=window.post.pick_state;
 }
-			}
+			},
+
+			away: function() {
+      this.results = [];
+      this.pick_results = [];
+    },
 			
 		},
 		mounted() {

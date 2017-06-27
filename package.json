@@ -20,7 +20,8 @@
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "vue-clickaway": "^2.1.0"
   },
   "dependencies": {
     "algoliasearch": "^3.22.2",
@@ -29,10 +30,15 @@
     "babel-plugin-transform-vue-jsx": "^3.4.3",
     "babel-preset-es2015": "^6.24.1",
     "element-ui": "^1.3.3",
+    "vue-clickaway": "^2.1.0",
     "vue-tables-2": "^0.6.2"
   },
   "babel": {
-      "presets": ["es2015"],
-      "plugins": ["transform-vue-jsx"]
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-vue-jsx"
+    ]
   }
 }

@@ -1,16 +1,12 @@
 <template>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        
             
                 
-            <v-client-table :data="tableData" :columns="columns" :options="options">
-
-
-               
-            </v-client-table>
+            <v-client-table id="shipmentts" :data="tableData" :columns="columns" :options="options"></v-client-table>
                 
             
-        </div>
+        
     </div>
 </template>
 
@@ -30,6 +26,8 @@
                     columns: [
 
                         'id',
+                        'ref_number',
+                        'po_number',
                         'pick_city', 
                         'pick_state', 
                         'delivery_city',
@@ -51,7 +49,7 @@
                             templates: {
                                 id: function(h, row) {
                                     let url=`/shipment/${row.id}/edit`
-                                    return <a class="edit-link" href={url}>Edit</a>;
+                                    return <a class="edit-link" href={url}>View</a>;
                                 }
                             }
                             
@@ -71,4 +69,6 @@
 .edit-link {
     color: black;
 }
+
+
 </style>

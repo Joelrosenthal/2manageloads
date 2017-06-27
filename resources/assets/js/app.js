@@ -4,8 +4,10 @@ import 'element-ui/lib/theme-default/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 
+
 Vue.use(ClientTable);
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI, { locale });
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -27,16 +29,17 @@ Vue.component('shipmentstable', require('./components/ShipmentsTable.vue'));
 Vue.component('commoditysearch', require('./components/CommoditySearch.vue'));
 Vue.component('pickanddeliverycomponent', require('./components/PickAndDeliveryComponent.vue'));
 
-
 const app = new Vue({
     el: '#app'
+
+    
 });
 
 
 
 
  $(function() {
-    $( ".plannedpicker, .actualpicker, .planneddeliverypicker, .actualdeliverypicker" ).datepicker({
+    $( ".plannedpicker, .actualpicker, .planneddeliverypicker, .actualdeliverypicker, .daterangestart, .daterangeend" ).datepicker({
       changeMonth: true,
       changeYear: true
     });

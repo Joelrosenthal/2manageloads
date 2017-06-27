@@ -38,6 +38,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('cell_phone') ? ' has-error' : '' }}">
+                            <label for="cell_phone" class="col-md-4 control-label">Cell Phone Number</label>
+
+                            <div class="col-md-6">
+                                <input id="cell_phone" type="cell_phone" class="form-control" name="cell_phone" value="{{ old('cell_phone') }}" required>
+
+                                @if ($errors->has('cell_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('cell_phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

@@ -1,11 +1,11 @@
 <template>
 	<div>
 		
-		<input type="text" name="commodity" id="commodity" class="form-control" v-model="query" @keyup="search(query)" placeholder="Make and Model is Recommended">
+		<input v-on-clickaway="away" type="text" name="commodity" id="commodity" class="form-control" v-model="query" @keyup="search(query)" placeholder="Make and Model is Recommended">
 
 		<div class="row commodity-search-background" v-if="results.length">
 
-			<div class="text-center" v-for="equip in results">
+			<div class="" v-for="equip in results">
 
 
 				<a v-on:click="select_commodity(equip.make, equip.model, equip.commodity, equip.length, equip.width, equip.height, equip.weight)" class="text-center">{{ equip.commodity + ': ' + equip.make + ' ' + equip.model + ' ' + equip.length + '" X ' + equip.width + '" X ' + equip.height + '" ' + equip.weight + 'lbs.' }}</a>
@@ -27,7 +27,9 @@
 
 	export default {
 
-		mounted() {
+	mixins: [VueClickaway.mixin],
+
+	mounted() {
 			this.getPostData();
 		},
 
@@ -66,7 +68,11 @@
 			this.query=window.post.commodity;
 			}
 			
-			}
+			},
+
+			away: function() {
+      			this.results = [];
+    		},
 		}
 	}
 

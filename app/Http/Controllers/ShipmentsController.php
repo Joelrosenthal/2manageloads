@@ -24,9 +24,9 @@ class ShipmentsController extends Controller
         'data' => \App\Shipment::all()
         ]);
 
-        
+        $dontShowActualDates = true;
 
-        return view('shipment');
+        return view('shipment')->with('dontShow', $dontShowActualDates);
     }
 
     /**
@@ -73,6 +73,12 @@ class ShipmentsController extends Controller
 
         $shipment = New Shipment($request->all());
 
+        $shipment->company_contact = Auth::user()->name;
+        $shipment->customer = Auth::user()->email;
+        $shipment->created_by = Auth::user()->email;
+        $shipment->user_id = Auth::user()->id;
+        $shipment->contact_phone = Auth::user()->cell_phone;
+
         $shipment->save();
 
         Mail::to(Auth::user()->email)->queue(new NewShipment($shipment));
@@ -109,8 +115,9 @@ class ShipmentsController extends Controller
             'data' => \App\Shipment::all()
             ]);
 
+         $dontShowActualDates = false;
 
-         return view('edit', compact('post', $post));
+         return view('edit', compact('post', $post))->with('dontShow', $dontShowActualDates);
     }
 
     /**
@@ -149,7 +156,7 @@ class ShipmentsController extends Controller
 
         $post->update($request->all());
 
-       
+       Mail::to(Auth::user()->email)->queue(new NewShipment($post));
 
         return redirect()->route('shipment.index');
     
@@ -176,8 +183,10 @@ class ShipmentsController extends Controller
          $start_date = $request->input('start_date');
          $end_date = $request->input('end_date');
 
+         //dd($start_date, $end_date);
+
         //$data = Item::get()->toArray();
-        $shipment = Shipment::select('id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state')->whereBetween('pick_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
+        $shipment = Shipment::select('id', 'ref_number', 'po_number', 'pick_city', 'pick_state','pick_date', 'pick_time', 'actual_pick_date', 'actual_pick_time','delivery_city', 'delivery_state','delivery_date', 'delivery_time', 'actual_delivery_date', 'actual_delivery_time', 'commodity', 'special_instructions', 'length','width','height','weight','miles')->whereBetween('delivery_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
 
         return \Excel::create('Profit_Report_' . $start_date . '_to_' . $end_date, function($excel) use ($shipment) {
             $excel->sheet('mySheet', function($sheet) use ($shipment)

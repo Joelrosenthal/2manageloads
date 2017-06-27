@@ -17872,25 +17872,29 @@ module.exports = function(module) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_element_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui_lib_theme_default_index_css__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_element_ui_lib_theme_default_index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_locale_lang_en__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_locale_lang_en___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_element_ui_lib_locale_lang_en__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_tables_2__ = __webpack_require__(245);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_tables_2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_tables_2__);
 
 
+var _vue = __webpack_require__(2);
 
+var _vue2 = _interopRequireDefault(_vue);
 
+var _elementUi = __webpack_require__(154);
 
+var _elementUi2 = _interopRequireDefault(_elementUi);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_tables_2__["ClientTable"]);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_element_ui___default.a, { locale: __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_locale_lang_en___default.a });
+__webpack_require__(210);
+
+var _en = __webpack_require__(157);
+
+var _en2 = _interopRequireDefault(_en);
+
+var _vueTables = __webpack_require__(245);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueTables.ClientTable);
+_vue2.default.use(_elementUi2.default, { locale: _en2.default });
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -17907,17 +17911,18 @@ window.Vue = __webpack_require__(2);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example', __webpack_require__(212));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('shipmentstable', __webpack_require__(214));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('commoditysearch', __webpack_require__(211));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pickanddeliverycomponent', __webpack_require__(213));
+_vue2.default.component('example', __webpack_require__(212));
+_vue2.default.component('shipmentstable', __webpack_require__(214));
+_vue2.default.component('commoditysearch', __webpack_require__(211));
+_vue2.default.component('pickanddeliverycomponent', __webpack_require__(213));
 
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+var app = new _vue2.default({
   el: '#app'
+
 });
 
 $(function () {
-  $(".plannedpicker, .actualpicker, .planneddeliverypicker, .actualdeliverypicker").datepicker({
+  $(".plannedpicker, .actualpicker, .planneddeliverypicker, .actualdeliverypicker, .daterangestart, .daterangeend").datepicker({
     changeMonth: true,
     changeYear: true
   });
@@ -23801,6 +23806,9 @@ var client = algoliasearch('FOI57C222C', '3eed1ff015b373eed1916d3e8d054d67');
 var index = client.initIndex('equipment');
 
 exports.default = {
+
+	mixins: [VueClickaway.mixin],
+
 	mounted: function mounted() {
 		this.getPostData();
 	},
@@ -23840,6 +23848,11 @@ exports.default = {
 
 				this.query = window.post.commodity;
 			}
+		},
+
+
+		away: function away() {
+			this.results = [];
 		}
 	}
 };
@@ -23968,6 +23981,9 @@ var client = algoliasearch('FOI57C222C', '3eed1ff015b373eed1916d3e8d054d67');
 var index = client.initIndex('stores');
 
 exports.default = {
+
+	mixins: [VueClickaway.mixin],
+
 	data: function data() {
 		return {
 
@@ -24082,7 +24098,14 @@ exports.default = {
 				this.pick_city = window.post.pick_city;
 				this.pick_state = window.post.pick_state;
 			}
+		},
+
+
+		away: function away() {
+			this.results = [];
+			this.pick_results = [];
 		}
+
 	},
 	mounted: function mounted() {
 		this.getPostData();
@@ -24111,10 +24134,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
 
 
 exports.default = {
@@ -24122,7 +24141,7 @@ exports.default = {
     data: function data() {
         return {
 
-            columns: ['id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'pick_date', 'delivery_date', 'urgency', 'commodity', 'special_instructions'],
+            columns: ['id', 'ref_number', 'po_number', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'pick_date', 'delivery_date', 'urgency', 'commodity', 'special_instructions'],
 
             tableData: window.data,
             options: {
@@ -24134,7 +24153,7 @@ exports.default = {
                             'a',
                             { 'class': 'edit-link', attrs: { href: url }
                             },
-                            ['Edit']
+                            ['View']
                         );
                     }
                 }
@@ -27126,7 +27145,7 @@ exports.push([module.i, "@charset \"UTF-8\";.el-breadcrumb:after,.el-breadcrumb:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(49)();
-exports.push([module.i, "\n.edit-link {\n    color: black;\n}\n", ""]);
+exports.push([module.i, "\n.edit-link {\n    color: black;\n}\n\n\n", ""]);
 
 /***/ }),
 /* 149 */
@@ -93679,6 +93698,11 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('input', {
     directives: [{
+      name: "on-clickaway",
+      rawName: "v-on-clickaway",
+      value: (_vm.away),
+      expression: "away"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.query),
@@ -93706,9 +93730,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), (_vm.results.length) ? _c('div', {
     staticClass: "row commodity-search-background"
   }, _vm._l((_vm.results), function(equip) {
-    return _c('div', {
-      staticClass: "text-center"
-    }, [_c('a', {
+    return _c('div', {}, [_c('a', {
       staticClass: "text-center",
       on: {
         "click": function($event) {
@@ -93830,6 +93852,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Pick Store Search")]), _vm._v(" "), _c('input', {
     directives: [{
+      name: "on-clickaway",
+      rawName: "v-on-clickaway",
+      value: (_vm.away),
+      expression: "away"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.pick_query),
@@ -93979,6 +94006,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Delivery Store Search")]), _vm._v(" "), _c('input', {
     directives: [{
+      name: "on-clickaway",
+      rawName: "v-on-clickaway",
+      value: (_vm.away),
+      expression: "away"
+    }, {
       name: "model",
       rawName: "v-model",
       value: (_vm.query),
@@ -94039,16 +94071,15 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
+    staticClass: "container-fluid"
   }, [_c('v-client-table', {
     attrs: {
+      "id": "shipmentts",
       "data": _vm.tableData,
       "columns": _vm.columns,
       "options": _vm.options
     }
-  })], 1)])
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
