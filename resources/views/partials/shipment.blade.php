@@ -19,7 +19,7 @@
 	</div>
 </div>
 
-<pickanddeliverycomponent></pickanddeliverycomponent>
+<pickanddeliverycomponent old_delivery_city="{!!  old('delivery_city') !!}"></pickanddeliverycomponent>
 
 <hr>
 

@@ -87,8 +87,15 @@
 	export default {
 
 		mixins: [VueClickaway.mixin],
+		props: {
+            old_delivery_city: {
+		        default: null,
+				required: false
+			}
+		},
 
 		data() {
+
 			return {
 				
 				mapHtml: '',
@@ -217,6 +224,9 @@
 			
 		},
 		mounted() {
+		    if (this.old_delivery_city !== null) {
+		        this.delivery_city = this.old_delivery_city;
+			}
 this.getPostData();
 		}
 
